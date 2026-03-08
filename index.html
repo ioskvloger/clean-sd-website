@@ -39,20 +39,13 @@
   }
 
   .logo {
-    display: flex;
-    align-items: center;
-    height: 50px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 2px;
   }
 
-  .logo img {
-    height: 50px;
-    width: auto;
-    transition: opacity 0.3s;
-  }
-
-  .logo img:hover {
-    opacity: 0.8;
-  }
+  .logo span { color: var(--white); }
 
   nav ul { list-style: none; display: flex; gap: 40px; }
   nav ul a {
@@ -560,9 +553,7 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">
-    <img src="cleansd-logo.svg" alt="Clean SD Logo">
-  </div>
+  <div class="logo">CLEAN<span>SD</span></div>
   <ul>
     <li><a href="#services">Services</a></li>
     <li><a href="#pricing">Pricing</a></li>

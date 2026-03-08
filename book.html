@@ -1,134 +1,811 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Now | Clean SD</title>
-    <style>
-        /* --- COPYING YOUR THEME --- */
-        :root {
-            --primary: #001F3F;
-            --accent: #FF6B00;
-            --bg-body: #ffffff;
-            --text-main: #333333;
-            --border: #eeeeee;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Cleaning — Clean SD San Diego</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #112240;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --white: #f8f6f0;
+    --gray: #8892a4;
+    --light-bg: #f2efe8;
+  }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-body: #121212;
-                --text-main: #e0e0e0;
-                --border: #333333;
-            }
-        }
-        
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            margin: 0; padding: 0;
-            background: var(--bg-body); color: var(--text-main);
-        }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+  }
 
-        /* HEADER */
-        .simple-header { text-align: center; margin-bottom: 40px; }
-        .logo { font-size: 24px; font-weight: 900; color: var(--primary); text-decoration: none; text-transform: uppercase; }
-        .logo span { color: var(--accent); }
-        @media (prefers-color-scheme: dark) { .logo { color: white; } }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 20px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
 
-        /* FORM STYLE */
-        form { display: flex; flex-direction: column; gap: 20px; }
-        
-        label { font-weight: bold; font-size: 14px; margin-bottom: 5px; display: block; }
-        
-        input, select, textarea {
-            width: 100%; padding: 15px;
-            border: 1px solid #ccc; border-radius: 8px;
-            font-size: 16px; background: white; color: #333;
-            box-sizing: border-box; /* Fixes padding issues */
-        }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900;
+    color: var(--gold); letter-spacing: 2px;
+    text-decoration: none;
+  }
+  .logo span { color: var(--white); }
 
-        button {
-            background-color: var(--accent); color: white;
-            border: none; padding: 15px; font-size: 18px; font-weight: bold;
-            border-radius: 8px; cursor: pointer; margin-top: 10px;
-        }
-        button:hover { background-color: #e55a00; }
+  .nav-back {
+    color: var(--gray); text-decoration: none;
+    font-size: 0.85rem; letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  .nav-back:hover { color: var(--gold); }
 
-        .back-link { display: block; text-align: center; margin-top: 20px; color: var(--text-main); text-decoration: none; }
-    </style>
+  /* HERO */
+  .hero {
+    padding: 140px 60px 80px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold); padding: 6px 20px;
+    font-size: 0.75rem; letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 900; margin-bottom: 20px;
+  }
+
+  .hero p {
+    color: var(--gray); font-size: 1.1rem;
+    max-width: 500px; margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* QUICK CONTACT STRIP */
+  .quick-contact {
+    background: var(--gold);
+    padding: 20px 60px;
+    display: flex; justify-content: center;
+    gap: 60px; flex-wrap: wrap;
+  }
+
+  .quick-item {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--navy);
+  }
+
+  .quick-item a {
+    color: var(--navy); text-decoration: none;
+    font-weight: 500; font-size: 0.95rem;
+  }
+
+  .quick-item span { font-size: 1.3rem; }
+
+  /* MAIN CONTENT */
+  .main {
+    max-width: 1100px; margin: 0 auto;
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* LEFT — INFO */
+  .info-panel { position: sticky; top: 100px; }
+
+  .info-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; margin-bottom: 8px;
+  }
+
+  .info-subtitle {
+    color: var(--gold); font-size: 0.8rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .info-item {
+    display: flex; gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .info-icon { font-size: 1.5rem; width: 36px; flex-shrink: 0; }
+
+  .info-content h4 {
+    font-size: 0.9rem; font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .info-content p, .info-content a {
+    color: var(--gray); font-size: 0.85rem;
+    line-height: 1.6; text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .info-content a:hover { color: var(--gold); }
+
+  .response-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 10px 20px; margin-top: 28px;
+    border-radius: 2px;
+  }
+
+  .response-badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #4ade80;
+    animation: pulse 2s infinite;
+  }
+
+  .response-badge span {
+    font-size: 0.8rem; color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* RIGHT — FORM */
+  .form-panel {
+    background: var(--navy2);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 48px 44px;
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; margin-bottom: 8px;
+  }
+
+  .form-subtitle {
+    color: var(--gray); font-size: 0.9rem;
+    margin-bottom: 36px; line-height: 1.6;
+  }
+
+  /* STEP INDICATOR */
+  .steps {
+    display: flex; gap: 0;
+    margin-bottom: 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 24px;
+  }
+
+  .step {
+    flex: 1; text-align: center;
+    position: relative;
+  }
+
+  .step::after {
+    content: '';
+    position: absolute; top: 14px; left: 60%;
+    width: 80%; height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .step:last-child::after { display: none; }
+
+  .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; margin: 0 auto 8px;
+    position: relative; z-index: 1;
+    transition: all 0.3s;
+  }
+
+  .step.active .step-num {
+    background: var(--gold); color: var(--navy);
+    border-color: var(--gold); font-weight: 700;
+  }
+
+  .step.done .step-num {
+    background: rgba(74,222,128,0.2);
+    border-color: #4ade80; color: #4ade80;
+  }
+
+  .step-label {
+    font-size: 0.7rem; color: var(--gray);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  .step.active .step-label { color: var(--gold); }
+
+  /* FORM SECTIONS */
+  .form-section { display: none; }
+  .form-section.active { display: block; }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-group label {
+    display: block; font-size: 0.72rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    transition: border-color 0.3s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .form-group select option { background: #112240; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* SERVICE CARDS */
+  .service-options {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-bottom: 8px;
+  }
+
+  .service-option {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 16px; cursor: pointer;
+    border-radius: 2px; transition: all 0.25s;
+    position: relative;
+  }
+
+  .service-option:hover { border-color: rgba(201,168,76,0.5); }
+
+  .service-option.selected {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .service-option.selected::after {
+    content: '✓';
+    position: absolute; top: 10px; right: 12px;
+    color: var(--gold); font-size: 0.8rem;
+  }
+
+  .service-option h4 { font-size: 0.9rem; margin-bottom: 4px; }
+  .service-option p { color: var(--gray); font-size: 0.78rem; }
+
+  /* BUTTONS */
+  .form-nav {
+    display: flex; justify-content: space-between;
+    align-items: center; margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .btn-next {
+    background: var(--gold); color: var(--navy);
+    padding: 14px 36px; border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 1px; cursor: pointer;
+    border-radius: 2px; transition: all 0.3s;
+  }
+
+  .btn-next:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-back-form {
+    background: none; border: 1px solid rgba(255,255,255,0.15);
+    color: var(--gray); padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; cursor: pointer;
+    border-radius: 2px; transition: all 0.3s;
+  }
+
+  .btn-back-form:hover { border-color: var(--white); color: var(--white); }
+
+  /* SUCCESS STATE */
+  .success-state {
+    text-align: center; padding: 40px 20px;
+    display: none;
+  }
+
+  .success-icon { font-size: 4rem; margin-bottom: 24px; }
+
+  .success-state h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; margin-bottom: 16px;
+  }
+
+  .success-state p { color: var(--gray); line-height: 1.7; margin-bottom: 8px; }
+
+  .success-state .gold { color: var(--gold); font-weight: 500; }
+
+  /* BOTTOM CHANNELS */
+  .channels {
+    background: var(--light-bg);
+    padding: 70px 60px;
+    text-align: center;
+    color: var(--navy);
+  }
+
+  .channels h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--navy);
+    margin-bottom: 12px;
+  }
+
+  .channels > p {
+    color: #4a5568; margin-bottom: 50px;
+    font-size: 1rem;
+  }
+
+  .channel-grid {
+    display: flex; justify-content: center;
+    flex-wrap: wrap; gap: 20px;
+    max-width: 900px; margin: 0 auto;
+  }
+
+  .channel-card {
+    background: var(--navy);
+    color: var(--white);
+    padding: 32px 36px; min-width: 180px;
+    text-decoration: none; border-radius: 2px;
+    transition: all 0.3s;
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .channel-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+  }
+
+  .channel-card .ch-icon { font-size: 2rem; margin-bottom: 12px; }
+  .channel-card h4 { font-size: 0.9rem; margin-bottom: 6px; }
+  .channel-card p { color: var(--gray); font-size: 0.8rem; }
+
+  /* FOOTER */
+  footer {
+    background: #060e1a;
+    padding: 30px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  footer p { color: var(--gray); font-size: 0.8rem; }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--gold); font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 100px 24px 60px; }
+    .quick-contact { padding: 16px 24px; gap: 20px; }
+    .main { grid-template-columns: 1fr; padding: 40px 20px; gap: 40px; }
+    .info-panel { position: static; }
+    .form-panel { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    .service-options { grid-template-columns: 1fr; }
+    .channel-grid { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="simple-header">
-            <a href="/" class="logo">Clean <span>SD</span></a>
-            <h2>Get Your Free Quote</h2>
-            <p>Tell us about your home. We'll reply within 15 minutes.</p>
-        </div>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">CLEAN<span>SD</span></a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
 
-        <form action="https://formsubmit.co/san.diego.cleaner2022@gmail.com" method="POST">
-            
-            <input type="text" name="_honey" style="display:none">
-            <input type="hidden" name="_next" value="https://clean-sd.org">
-            <input type="hidden" name="_subject" value="New Lead from Clean SD Website!">
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Request a Cleaning</div>
+  <h1>Book Your Cleaning</h1>
+  <p>Fill out the form below and we'll confirm your booking within 1 hour via WhatsApp or phone.</p>
+</div>
 
-            <div>
-                <label>Full Name</label>
-                <input type="text" name="Name" required placeholder="John Doe">
-            </div>
+<!-- QUICK CONTACT -->
+<div class="quick-contact">
+  <div class="quick-item">
+    <span>📱</span>
+    <a href="https://wa.me/16197888721">WhatsApp: +1 (619) 788-8721</a>
+  </div>
+  <div class="quick-item">
+    <span>📧</span>
+    <a href="mailto:san.diego.cleaner2022@gmail.com">san.diego.cleaner2022@gmail.com</a>
+  </div>
+  <div class="quick-item">
+    <span>⏱️</span>
+    <span style="font-size:0.9rem; font-weight:500;">Response within 1 hour</span>
+  </div>
+</div>
 
-            <div>
-                <label>Phone Number</label>
-                <input type="tel" name="Phone" required placeholder="(555) 123-4567">
-            </div>
+<!-- MAIN -->
+<div class="main">
 
-            <div>
-                <label>Service Address</label>
-                <input type="text" name="Address" required placeholder="San Diego, CA">
-            </div>
+  <!-- LEFT INFO -->
+  <div class="info-panel">
+    <p class="info-subtitle">Why Choose Us</p>
+    <h2 class="info-title">Simple, Reliable Booking</h2>
 
-            <div>
-                <label>Service Type</label>
-                <select name="Service">
-                    <option>Airbnb / Turnover Cleaning</option>
-                    <option>Move-In / Move-Out Deep Clean</option>
-                    <option>Standard Residential Clean</option>
-                </select>
-            </div>
-
-            <div style="display: flex; gap: 10px;">
-                <div style="flex:1">
-                    <label>Bedrooms</label>
-                    <select name="Bedrooms">
-                        <option>Studio</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4+</option>
-                    </select>
-                </div>
-                <div style="flex:1">
-                    <label>Bathrooms</label>
-                    <select name="Bathrooms">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4+</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <label>Preferred Date</label>
-                <input type="date" name="Date">
-            </div>
-
-            <button type="submit">Request Booking</button>
-        </form>
-
-        <a href="/" class="back-link">← Back to Home</a>
+    <div class="info-item">
+      <div class="info-icon">✅</div>
+      <div class="info-content">
+        <h4>Confirmed Within 1 Hour</h4>
+        <p>Send your request and we'll confirm availability, pricing, and timing by WhatsApp or phone within the hour.</p>
+      </div>
     </div>
 
+    <div class="info-item">
+      <div class="info-icon">💰</div>
+      <div class="info-content">
+        <h4>Custom Pricing</h4>
+        <p>Every property is different. We'll give you an exact price based on your unit's size and condition — no surprises.</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icon">🔑</div>
+      <div class="info-content">
+        <h4>Easy Access</h4>
+        <p>Lockbox, keypad, or key handoff — whatever works best for you. We've worked with every access method.</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icon">📋</div>
+      <div class="info-content">
+        <h4>Post-Clean Report</h4>
+        <p>We message you after every clean with a completion note and any issues found at the property.</p>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="info-icon">🔄</div>
+      <div class="info-content">
+        <h4>Also Available On</h4>
+        <p>
+          <a href="https://wa.me/16197888721">WhatsApp</a> ·
+          <a href="mailto:san.diego.cleaner2022@gmail.com">Email</a> ·
+          Instagram · Facebook · Turno
+        </p>
+      </div>
+    </div>
+
+    <div class="response-badge">
+      <div class="dot"></div>
+      <span>Typically responds in under 1 hour</span>
+    </div>
+  </div>
+
+  <!-- RIGHT FORM -->
+  <div class="form-panel">
+    <h3 class="form-title">Booking Request</h3>
+    <p class="form-subtitle">3 quick steps. We'll confirm everything by WhatsApp.</p>
+
+    <!-- STEPS -->
+    <div class="steps">
+      <div class="step active" id="step-indicator-1">
+        <div class="step-num">1</div>
+        <div class="step-label">Property</div>
+      </div>
+      <div class="step" id="step-indicator-2">
+        <div class="step-num">2</div>
+        <div class="step-label">Schedule</div>
+      </div>
+      <div class="step" id="step-indicator-3">
+        <div class="step-num">3</div>
+        <div class="step-label">Contact</div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: PROPERTY -->
+    <div class="form-section active" id="section-1">
+      <div class="form-group">
+        <label>Service Type</label>
+        <div class="service-options">
+          <div class="service-option selected" onclick="selectService(this)">
+            <h4>Airbnb Turnover</h4>
+            <p>Between guest stays</p>
+          </div>
+          <div class="service-option" onclick="selectService(this)">
+            <h4>Deep Clean</h4>
+            <p>Full restoration clean</p>
+          </div>
+          <div class="service-option" onclick="selectService(this)">
+            <h4>Move-Out Clean</h4>
+            <p>Guaranteed standard</p>
+          </div>
+          <div class="service-option" onclick="selectService(this)">
+            <h4>Regular Maintenance</h4>
+            <p>Weekly or bi-weekly</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Property Type</label>
+          <select id="propType">
+            <option value="">Select size...</option>
+            <option>Studio</option>
+            <option>1 Bedroom</option>
+            <option>2 Bedroom</option>
+            <option>3 Bedroom</option>
+            <option>4+ Bedroom</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Number of Bathrooms</label>
+          <select>
+            <option>1 Bathroom</option>
+            <option>2 Bathrooms</option>
+            <option>3 Bathrooms</option>
+            <option>3+ Bathrooms</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Property Address</label>
+        <input type="text" id="address" placeholder="Street address, San Diego, CA">
+      </div>
+
+      <div class="form-group">
+        <label>Special Instructions (optional)</label>
+        <textarea rows="3" id="notes" placeholder="Access codes, pet info, areas needing extra attention..."></textarea>
+      </div>
+
+      <div class="form-nav">
+        <span></span>
+        <button class="btn-next" onclick="nextStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- SECTION 2: SCHEDULE -->
+    <div class="form-section" id="section-2">
+      <div class="form-group">
+        <label>Preferred Date</label>
+        <input type="date" id="prefDate">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Preferred Time</label>
+          <select id="prefTime">
+            <option>Flexible / Any time</option>
+            <option>Early morning (8–10 AM)</option>
+            <option>Late morning (10 AM–12 PM)</option>
+            <option>Afternoon (12–3 PM)</option>
+            <option>Late afternoon (3–6 PM)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Frequency</label>
+          <select>
+            <option>One-time clean</option>
+            <option>Weekly recurring</option>
+            <option>Bi-weekly recurring</option>
+            <option>Monthly recurring</option>
+            <option>As needed (Airbnb)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Check-out / Check-in Window</label>
+        <input type="text" placeholder="e.g. Check-out 11 AM, Check-in 3 PM">
+      </div>
+
+      <div class="form-group">
+        <label>How Did You Hear About Us?</label>
+        <select>
+          <option>Airbnb / Turno platform</option>
+          <option>Google search</option>
+          <option>Facebook / Instagram</option>
+          <option>Referral from a friend</option>
+          <option>Craigslist</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-back-form" onclick="nextStep(1)">← Back</button>
+        <button class="btn-next" onclick="nextStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- SECTION 3: CONTACT -->
+    <div class="form-section" id="section-3">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="name" placeholder="First and last name">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone / WhatsApp ★</label>
+          <input type="tel" id="phone" placeholder="+1 (619) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="you@email.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Preferred Contact Method</label>
+        <select>
+          <option>WhatsApp (fastest)</option>
+          <option>Phone call</option>
+          <option>SMS text</option>
+          <option>Email</option>
+        </select>
+      </div>
+
+      <div style="background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); padding: 16px 20px; margin-bottom: 20px; font-size: 0.85rem; color: var(--gray); line-height: 1.6;">
+        ★ WhatsApp is the fastest way to confirm. We respond to all requests within 1 hour during business hours.
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-back-form" onclick="nextStep(2)">← Back</button>
+        <button class="btn-next" onclick="submitForm()">Send Request ✓</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-state" id="success">
+      <div class="success-icon">✅</div>
+      <h3>Request Sent!</h3>
+      <p>Thank you! Your booking request has been received.</p>
+      <p class="gold" style="margin: 16px 0; font-size: 1.05rem;">We'll contact you within 1 hour via WhatsApp.</p>
+      <p>Questions? Text us directly: <a href="https://wa.me/16197888721" style="color: var(--gold);">+1 (619) 788-8721</a></p>
+      <br>
+      <a href="index.html" style="color: var(--gray); font-size: 0.85rem; text-decoration: none;">← Back to homepage</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CHANNELS -->
+<div class="channels">
+  <h2>Other Ways to Book</h2>
+  <p>Prefer a quick message? Reach us on any platform — we respond fast.</p>
+  <div class="channel-grid">
+    <a href="https://wa.me/16197888721" class="channel-card">
+      <div class="ch-icon">📱</div>
+      <h4>WhatsApp</h4>
+      <p>+1 (619) 788-8721<br>Fastest response</p>
+    </a>
+    <a href="tel:+16197888721" class="channel-card">
+      <div class="ch-icon">📞</div>
+      <h4>Phone / SMS</h4>
+      <p>+1 (619) 788-8721<br>Call or text anytime</p>
+    </a>
+    <a href="mailto:san.diego.cleaner2022@gmail.com" class="channel-card">
+      <div class="ch-icon">📧</div>
+      <h4>Email</h4>
+      <p>san.diego.cleaner2022<br>@gmail.com</p>
+    </a>
+    <a href="#" class="channel-card">
+      <div class="ch-icon">📲</div>
+      <h4>Instagram / Facebook</h4>
+      <p>@cleansd<br>DM us anytime</p>
+    </a>
+    <a href="#" class="channel-card">
+      <div class="ch-icon">🔄</div>
+      <h4>Turno</h4>
+      <p>Find us on Turno<br>Automated scheduling</p>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">CLEAN SD</div>
+  <p>© 2026 Clean SD — Professional Airbnb Cleaning, San Diego</p>
+  <p style="color:#3d4f6a; font-size:0.8rem;">Licensed & Insured</p>
+</footer>
+
+<script>
+  let currentStep = 1;
+  let selectedService = 'Airbnb Turnover';
+
+  function selectService(el) {
+    document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedService = el.querySelector('h4').textContent;
+  }
+
+  function nextStep(step) {
+    // Hide current
+    document.getElementById(`section-${currentStep}`).classList.remove('active');
+    document.getElementById(`step-indicator-${currentStep}`).classList.remove('active');
+    document.getElementById(`step-indicator-${currentStep}`).classList.add('done');
+
+    // Show new
+    currentStep = step;
+    document.getElementById(`section-${currentStep}`).classList.add('active');
+    document.getElementById(`step-indicator-${currentStep}`).classList.add('active');
+    document.getElementById(`step-indicator-${currentStep}`).classList.remove('done');
+
+    // If going back
+    if (step < 3) {
+      for (let i = step + 1; i <= 3; i++) {
+        document.getElementById(`step-indicator-${i}`).classList.remove('done', 'active');
+      }
+    }
+
+    // Scroll to form
+    document.querySelector('.form-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function submitForm() {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+
+    if (!name || !phone) {
+      alert('Please fill in your name and phone number.');
+      return;
+    }
+
+    // Hide all sections
+    document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+    document.querySelector('.steps').style.display = 'none';
+    document.querySelector('.form-title').style.display = 'none';
+    document.querySelector('.form-subtitle').style.display = 'none';
+
+    // Show success
+    document.getElementById('success').style.display = 'block';
+
+    // Scroll
+    document.querySelector('.form-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('prefDate').min = today;
+</script>
 </body>
 </html>
