@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean SD — Professional Airbnb Cleaning San Diego</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #112240;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --white: #f8f6f0;
+    --gray: #8892a4;
+    --light-bg: #f2efe8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 20px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .logo span { color: var(--white); }
+
+  nav ul { list-style: none; display: flex; gap: 40px; }
+  nav ul a {
+    color: var(--white); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  nav ul a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold); color: var(--navy) !important;
+    padding: 10px 24px; border-radius: 2px;
+    font-weight: 500 !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 60px 80px;
+    position: relative;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, #0d1f3c 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -50%; right: -10%;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .hero-content { max-width: 680px; position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 6px 18px;
+    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900; line-height: 1.1;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease 0.15s both;
+  }
+
+  .hero h1 em {
+    font-style: italic; color: var(--gold);
+    display: block;
+  }
+
+  .hero p {
+    font-size: 1.1rem; line-height: 1.8;
+    color: #a8b2c4; max-width: 520px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.45s both;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 16px 40px; font-size: 0.9rem;
+    font-weight: 500; letter-spacing: 1px;
+    text-decoration: none; border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-secondary {
+    border: 1px solid rgba(248,246,240,0.3);
+    color: var(--white); padding: 16px 40px;
+    font-size: 0.9rem; font-weight: 500;
+    text-decoration: none; border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: flex; gap: 60px; margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    animation: fadeUp 0.8s ease 0.6s both;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700; color: var(--gold);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--gray); letter-spacing: 1px; margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 100px 60px; }
+
+  .section-tag {
+    font-size: 0.75rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700; line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  /* SERVICES */
+  #services { background: var(--navy2); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px; margin-top: 60px;
+  }
+
+  .service-card {
+    background: var(--navy);
+    padding: 48px 40px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  .service-card:hover::before { width: 100%; }
+  .service-card:hover { transform: translateY(-4px); }
+
+  .service-icon {
+    font-size: 2.5rem; margin-bottom: 24px;
+  }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; margin-bottom: 16px;
+  }
+
+  .service-card p { color: var(--gray); line-height: 1.8; font-size: 0.95rem; }
+
+  /* PROCESS */
+  #process { background: var(--light-bg); color: var(--navy); }
+  #process .section-title { color: var(--navy); }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px; margin-top: 60px;
+  }
+
+  .process-item { position: relative; }
+
+  .process-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; font-weight: 900;
+    color: rgba(10,22,40,0.08);
+    position: absolute; top: -20px; left: -10px;
+    line-height: 1;
+  }
+
+  .process-content { padding-top: 20px; position: relative; }
+
+  .process-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--navy);
+    margin-bottom: 12px;
+  }
+
+  .process-content p { color: #4a5568; line-height: 1.8; font-size: 0.9rem; }
+
+  .process-checklist {
+    list-style: none; margin-top: 10px;
+  }
+
+  .process-checklist li {
+    color: #4a5568; font-size: 0.85rem;
+    padding: 4px 0; padding-left: 20px;
+    position: relative;
+  }
+
+  .process-checklist li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--gold); font-weight: 700;
+  }
+
+  /* PRICING */
+  #pricing { background: var(--navy); }
+
+  .pricing-note {
+    background: rgba(201,168,76,0.1);
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px; margin-bottom: 60px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .pricing-note p { color: #a8b2c4; font-size: 0.95rem; line-height: 1.7; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .price-card {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 32px; border-radius: 4px;
+    transition: all 0.3s; text-align: center;
+  }
+
+  .price-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .price-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, var(--navy2), #1a2d4a);
+    position: relative;
+  }
+
+  .featured-tag {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--navy);
+    padding: 4px 20px; font-size: 0.7rem;
+    letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .price-type {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; margin-bottom: 8px;
+  }
+
+  .price-amount {
+    font-size: 2.5rem; font-weight: 300;
+    color: var(--gold); margin: 16px 0;
+  }
+
+  .price-amount span { font-size: 1rem; }
+
+  .price-desc { color: var(--gray); font-size: 0.85rem; line-height: 1.6; }
+
+  .pricing-cta {
+    text-align: center; margin-top: 60px;
+  }
+
+  .pricing-cta p {
+    color: var(--gray); margin-bottom: 24px; font-size: 1rem;
+  }
+
+  /* ABOUT */
+  #about { background: var(--navy2); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    margin-top: 60px;
+  }
+
+  .about-text p {
+    color: #a8b2c4; line-height: 1.9;
+    font-size: 1rem; margin-bottom: 20px;
+  }
+
+  .about-highlights {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-top: 40px;
+  }
+
+  .highlight {
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+  }
+
+  .highlight h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; margin-bottom: 6px;
+  }
+
+  .highlight p { color: var(--gray); font-size: 0.85rem; line-height: 1.6; }
+
+  .about-visual {
+    background: var(--navy);
+    padding: 60px 40px;
+    border: 1px solid rgba(201,168,76,0.2);
+    position: relative;
+  }
+
+  .about-visual::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem; color: rgba(201,168,76,0.1);
+    position: absolute; top: -20px; left: 20px;
+    line-height: 1;
+  }
+
+  .testimonial-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-style: italic;
+    line-height: 1.8; color: var(--white);
+    position: relative; z-index: 1;
+  }
+
+  .testimonial-author {
+    margin-top: 24px; color: var(--gold);
+    font-size: 0.85rem; letter-spacing: 1px;
+  }
+
+  /* AREAS */
+  #areas { background: var(--light-bg); color: var(--navy); }
+  #areas .section-title { color: var(--navy); }
+  #areas .section-tag { color: var(--gold); }
+
+  .areas-grid {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 40px;
+  }
+
+  .area-tag {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 24px; border-radius: 2px;
+    font-size: 0.85rem; letter-spacing: 0.5px;
+    transition: all 0.3s;
+  }
+
+  .area-tag:hover { background: var(--gold); color: var(--navy); }
+
+  /* BOOK */
+  #book { background: var(--navy); }
+
+  .book-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; margin-top: 60px;
+  }
+
+  .book-channels h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; margin-bottom: 32px;
+  }
+
+  .channel-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .channel-icon { font-size: 1.8rem; width: 48px; }
+
+  .channel-info h4 { font-size: 1rem; margin-bottom: 4px; }
+  .channel-info a, .channel-info p {
+    color: var(--gold); font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  /* FORM */
+  .booking-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; margin-bottom: 32px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-group label {
+    display: block; font-size: 0.75rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white);
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem; border-radius: 2px;
+    transition: border-color 0.3s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group select option { background: var(--navy2); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-submit {
+    width: 100%; padding: 16px;
+    background: var(--gold); color: var(--navy);
+    border: none; font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 1px; cursor: pointer;
+    border-radius: 2px; transition: all 0.3s;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* CONTACT */
+  #contact {
+    background: var(--navy2);
+    text-align: center;
+  }
+
+  .contact-grid {
+    display: flex; justify-content: center;
+    flex-wrap: wrap; gap: 60px;
+    margin-top: 60px;
+  }
+
+  .contact-item { text-align: center; }
+
+  .contact-item .icon { font-size: 2rem; margin-bottom: 16px; }
+
+  .contact-item h4 {
+    font-size: 0.75rem; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gray);
+    margin-bottom: 8px;
+  }
+
+  .contact-item a, .contact-item p {
+    color: var(--white); text-decoration: none;
+    font-size: 1rem; transition: color 0.3s;
+  }
+
+  .contact-item a:hover { color: var(--gold); }
+
+  /* FOOTER */
+  footer {
+    background: #060e1a;
+    padding: 40px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+
+  footer p { color: var(--gray); font-size: 0.85rem; }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--gold);
+    font-weight: 700; letter-spacing: 2px;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    section { padding: 70px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { gap: 30px; flex-wrap: wrap; }
+    .about-grid, .book-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: all 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">CLEAN<span>SD</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#book" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">San Diego's Premier Airbnb Cleaning</div>
+    <h1>
+      Spotless Properties.
+      <em>Every Turnover.</em>
+    </h1>
+    <p>Professional Airbnb cleaning service trusted by San Diego hosts. We handle every detail — from fresh linens to restocked amenities — so your guests always arrive to a perfect property.</p>
+    <div class="hero-btns">
+      <a href="#book" class="btn-primary">Book a Cleaning</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">9+</div>
+        <div class="stat-label">Regular Clients</div>
+      </div>
+      <div>
+        <div class="stat-num">8yr</div>
+        <div class="stat-label">Airbnb Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Satisfaction Focus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-tag reveal">What We Offer</div>
+  <h2 class="section-title reveal">Professional Cleaning<br>Services</h2>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🏠</div>
+      <h3>Airbnb Turnover Cleaning</h3>
+      <p>Fast, thorough turnover cleaning between guest stays. We work within your check-out to check-in window, every time.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">✨</div>
+      <h3>Deep Cleaning</h3>
+      <p>Comprehensive top-to-bottom deep clean for properties needing extra attention. Perfect for seasonal resets or new listings.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🚪</div>
+      <h3>Move-Out Cleaning</h3>
+      <p>Guaranteed move-out cleans that meet property management standards. Restoration-level cleaning when it matters most.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🛎️</div>
+      <h3>Guest-Ready Setup</h3>
+      <p>Full linen change, towel replenishment, amenity restocking, and property staging. Your guests walk in ready to relax.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📋</div>
+      <h3>Property Inspection</h3>
+      <p>We document and report any damages, missing items, or maintenance issues after each clean. Stay informed, stay protected.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🔄</div>
+      <h3>Recurring Maintenance</h3>
+      <p>Scheduled weekly or bi-weekly cleaning for active listings. Build a reliable routine with a cleaner who knows your property.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-tag reveal">How We Clean</div>
+  <h2 class="section-title reveal">Our Cleaning Process</h2>
+  <p class="reveal" style="color:#4a5568; max-width:600px; line-height:1.8;">Every clean follows a structured checklist to ensure nothing is missed. Here's exactly what we do in each room.</p>
+  <div class="process-grid">
+    <div class="process-item reveal">
+      <div class="process-num">01</div>
+      <div class="process-content">
+        <h3>Pre-Arrival Preparation</h3>
+        <ul class="process-checklist">
+          <li>Inspect property for previous guest items</li>
+          <li>Remove any forgotten belongings</li>
+          <li>Assess cleaning scope and prioritize tasks</li>
+          <li>Prepare supplies and fresh linens</li>
+        </ul>
+      </div>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">02</div>
+      <div class="process-content">
+        <h3>Living Areas</h3>
+        <ul class="process-checklist">
+          <li>Reposition furniture to original layout</li>
+          <li>Dust all surfaces and furniture</li>
+          <li>Sanitize light switches and remotes</li>
+          <li>Vacuum and mop all flooring</li>
+          <li>Clean windows and reset TV remotes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">03</div>
+      <div class="process-content">
+        <h3>Bedrooms & Linens</h3>
+        <ul class="process-checklist">
+          <li>Strip and replace all bedding</li>
+          <li>Make beds to hotel standard</li>
+          <li>Dust nightstands and surfaces</li>
+          <li>Clean mirrors and windows</li>
+          <li>Vacuum floors and under beds</li>
+        </ul>
+      </div>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">04</div>
+      <div class="process-content">
+        <h3>Bathroom</h3>
+        <ul class="process-checklist">
+          <li>Sanitize sink, toilet, and shower</li>
+          <li>Clean all high-touch surfaces</li>
+          <li>Replace towels and shower mat</li>
+          <li>Refill soap dispensers</li>
+          <li>Empty trash, replace liner</li>
+        </ul>
+      </div>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">05</div>
+      <div class="process-content">
+        <h3>Kitchen</h3>
+        <ul class="process-checklist">
+          <li>Clean and sanitize all counters</li>
+          <li>Wash and put away dishes</li>
+          <li>Clean appliances inside and out</li>
+          <li>Restock coffee and essentials</li>
+          <li>Mop floors, empty trash</li>
+        </ul>
+      </div>
+    </div>
+    <div class="process-item reveal">
+      <div class="process-num">06</div>
+      <div class="process-content">
+        <h3>Final Inspection</h3>
+        <ul class="process-checklist">
+          <li>Walk-through every room</li>
+          <li>Photograph completed property</li>
+          <li>Report any damages or issues</li>
+          <li>Confirm Airbnb manual is in place</li>
+          <li>Lock up securely</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-tag reveal">Transparent Pricing</div>
+  <h2 class="section-title reveal">Every Property is Different</h2>
+  <div class="pricing-note reveal">
+    <p>All prices are set individually based on your property's size, layout, condition, and specific requirements. The rates below are starting points — contact us for an exact quote tailored to your listing. Regular clients receive consistent pricing that reflects our long-term partnership.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <div class="price-type">Studio</div>
+      <div class="price-amount"><span>from </span>$80</div>
+      <div class="price-desc">Compact units and studio apartments. Quick turnaround for busy listings.</div>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-type">1 Bedroom</div>
+      <div class="price-amount"><span>from </span>$100</div>
+      <div class="price-desc">One bedroom apartments and condos. Full turnover service included.</div>
+    </div>
+    <div class="price-card featured reveal">
+      <div class="featured-tag">Most Popular</div>
+      <div class="price-type">2 Bedroom</div>
+      <div class="price-amount"><span>from </span>$130</div>
+      <div class="price-desc">Two bedroom homes and apartments. Our most requested service size.</div>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-type">3 Bedroom</div>
+      <div class="price-amount"><span>from </span>$160</div>
+      <div class="price-desc">Three bedroom houses and larger properties. Thorough whole-home clean.</div>
+    </div>
+    <div class="price-card reveal">
+      <div class="price-type">Deep Clean</div>
+      <div class="price-amount"><span>+</span>$150</div>
+      <div class="price-desc">Add-on to any service. Full restoration-level cleaning for demanding situations.</div>
+    </div>
+  </div>
+  <div class="pricing-cta reveal">
+    <p>Not sure about pricing? Message us — we'll give you an exact quote within the hour.</p>
+    <a href="#book" class="btn-primary">Get a Quote</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag reveal">Our Story</div>
+  <h2 class="section-title reveal">15 Years of Cleaning Excellence</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>My name is Dmitrii, and I've been perfecting the art of cleaning since 2010, when I worked as an orderly in a hospital intensive care unit. That environment taught me the highest standards of cleanliness, sanitation, and attention to detail — habits that have stayed with me ever since.</p>
+      <p>After managing restaurants and training staff on surface care, I began working as a professional cleaner in 2016. By 2018, I was running a specialized Airbnb cleaning team in Seoul, South Korea — training cleaners, managing schedules, and overseeing quality across multiple properties simultaneously.</p>
+      <p>In 2022, I brought that expertise to San Diego. I work with a trusted team of cleaners and have built lasting relationships with local Airbnb hosts who rely on us for every turnover. We're not just a cleaning service — we're a reliable part of your hosting operation.</p>
+      <div class="about-highlights">
+        <div class="highlight">
+          <h4>Hospital-Grade Standards</h4>
+          <p>Trained in sterile cleaning environments since 2010</p>
+        </div>
+        <div class="highlight">
+          <h4>Airbnb Specialist</h4>
+          <p>8+ years focused exclusively on short-term rental properties</p>
+        </div>
+        <div class="highlight">
+          <h4>Damage Reporting</h4>
+          <p>We document and report issues so you're never caught off guard</p>
+        </div>
+        <div class="highlight">
+          <h4>Reliable & Consistent</h4>
+          <p>Regular clients receive the same cleaner who knows their property</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual reveal">
+      <p class="testimonial-text">"We treat every property as if it were our own home. The standard doesn't drop because it's a rental — it rises because guests deserve the best possible first impression."</p>
+      <p class="testimonial-author">— Dmitrii, Founder & Lead Cleaner</p>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas">
+  <div class="section-tag reveal">Where We Work</div>
+  <h2 class="section-title reveal">Serving San Diego & Surrounding Areas</h2>
+  <p class="reveal" style="color:#4a5568; max-width:600px; line-height:1.8; margin-bottom: 0;">We clean Airbnb properties throughout San Diego County. Don't see your area? Contact us — we likely cover it.</p>
+  <div class="areas-grid">
+    <div class="area-tag reveal">Downtown San Diego</div>
+    <div class="area-tag reveal">North Park</div>
+    <div class="area-tag reveal">Pacific Beach</div>
+    <div class="area-tag reveal">Ocean Beach</div>
+    <div class="area-tag reveal">Mission Beach</div>
+    <div class="area-tag reveal">Del Mar</div>
+    <div class="area-tag reveal">La Mesa</div>
+    <div class="area-tag reveal">Oceanside</div>
+    <div class="area-tag reveal">Hillcrest</div>
+    <div class="area-tag reveal">Little Italy</div>
+    <div class="area-tag reveal">Mission Valley</div>
+    <div class="area-tag reveal">Chula Vista</div>
+    <div class="area-tag reveal">Coronado</div>
+    <div class="area-tag reveal">Point Loma</div>
+    <div class="area-tag reveal">Encinitas</div>
+    <div class="area-tag reveal">Solana Beach</div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section id="book">
+  <div class="section-tag reveal">Get Started</div>
+  <h2 class="section-title reveal">Book a Cleaning</h2>
+  <div class="book-grid">
+    <div class="book-channels reveal">
+      <h3>Contact Us Directly</h3>
+      <div class="channel-item">
+        <div class="channel-icon">📱</div>
+        <div class="channel-info">
+          <h4>WhatsApp (Fastest Response)</h4>
+          <a href="https://wa.me/16197888721">+1 (619) 788-8721</a>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="channel-icon">📞</div>
+        <div class="channel-info">
+          <h4>Phone / SMS</h4>
+          <a href="tel:+16197888721">+1 (619) 788-8721</a>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="channel-icon">📧</div>
+        <div class="channel-info">
+          <h4>Email</h4>
+          <a href="mailto:san.diego.cleaner2022@gmail.com">san.diego.cleaner2022@gmail.com</a>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="channel-icon">📲</div>
+        <div class="channel-info">
+          <h4>Instagram / Facebook</h4>
+          <p>@cleansd — DM us anytime</p>
+        </div>
+      </div>
+      <div class="channel-item">
+        <div class="channel-icon">🔄</div>
+        <div class="channel-info">
+          <h4>Turno Platform</h4>
+          <p>Find us on Turno for automated scheduling</p>
+        </div>
+      </div>
+    </div>
+    <div class="booking-form reveal">
+      <h3>Send a Request</h3>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="John Smith">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" placeholder="+1 (619) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Property Type</label>
+          <select>
+            <option>Studio</option>
+            <option>1 Bedroom</option>
+            <option>2 Bedroom</option>
+            <option>3 Bedroom</option>
+            <option>4+ Bedroom</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Service Type</label>
+          <select>
+            <option>Airbnb Turnover</option>
+            <option>Deep Clean</option>
+            <option>Move-Out Clean</option>
+            <option>Regular Maintenance</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Property Address</label>
+        <input type="text" placeholder="Street address, San Diego, CA">
+      </div>
+      <div class="form-group">
+        <label>Preferred Date & Time</label>
+        <input type="text" placeholder="e.g. March 15, after 11am">
+      </div>
+      <div class="form-group">
+        <label>Additional Notes</label>
+        <textarea rows="3" placeholder="Any special instructions, access codes, or requests..."></textarea>
+      </div>
+      <button class="form-submit" onclick="alert('Thank you! We will contact you within 1 hour via WhatsApp or phone.')">Send Booking Request</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag reveal">Contact</div>
+  <h2 class="section-title reveal">We Respond Within the Hour</h2>
+  <div class="contact-grid">
+    <div class="contact-item reveal">
+      <div class="icon">📱</div>
+      <h4>WhatsApp & Phone</h4>
+      <a href="tel:+16197888721">+1 (619) 788-8721</a>
+    </div>
+    <div class="contact-item reveal">
+      <div class="icon">📧</div>
+      <h4>Email</h4>
+      <a href="mailto:san.diego.cleaner2022@gmail.com">san.diego.cleaner2022@gmail.com</a>
+    </div>
+    <div class="contact-item reveal">
+      <div class="icon">📍</div>
+      <h4>Service Area</h4>
+      <p>San Diego County, CA</p>
+    </div>
+    <div class="contact-item reveal">
+      <div class="icon">⏰</div>
+      <h4>Availability</h4>
+      <p>7 days a week</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">CLEAN SD</div>
+  <p>© 2026 Clean SD — Professional Airbnb Cleaning, San Diego</p>
+  <p style="color:#3d4f6a; font-size:0.8rem;">Licensed & Insured</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>

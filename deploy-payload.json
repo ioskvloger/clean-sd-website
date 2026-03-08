@@ -1,0 +1,10 @@
+{
+  "manifest": {
+    "index.html": {
+      "contentType": "text/html"
+    },
+    "book.html": {
+      "contentType": "text/html"
+    }
+  }
+}

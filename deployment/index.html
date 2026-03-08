@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean SD | San Diego Airbnb & Move-Out Cleaning</title>
+    <style>
+        /* --- 1. COLOR VARIABLES (The Magic) --- */
+        :root {
+            /* Light Mode (Default) */
+            --primary: #001F3F;       /* Navy */
+            --accent: #FF6B00;        /* Orange */
+            --bg-body: #ffffff;       /* White Background */
+            --bg-hero: #F0F4F8;       /* Light Blue/Gray for Hero */
+            --bg-card: #ffffff;       /* White Cards */
+            --text-main: #333333;     /* Dark Text */
+            --text-muted: #666666;    /* Gray Text */
+            --border: #eeeeee;
+            --heading: #001F3F;       /* Navy Headings */
+        }
+
+        /* DARK MODE OVERRIDES */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #121212;       /* Very Dark Gray */
+                --bg-hero: #1e1e1e;       /* Slightly Lighter Dark */
+                --bg-card: #252525;       /* Dark Cards */
+                --text-main: #e0e0e0;     /* Light Gray Text */
+                --text-muted: #aaaaaa;    /* Dim Text */
+                --border: #333333;
+                --heading: #ffffff;       /* White Headings */
+            }
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 2. HEADER --- */
+        header {
+            background: var(--bg-card);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--heading);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .logo span { color: var(--accent); }
+
+        .book-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .book-btn:hover { background-color: #e55a00; }
+
+        /* --- 3. HERO --- */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(180deg, var(--bg-body) 0%, var(--bg-hero) 100%);
+        }
+
+        .hero h1 {
+            color: var(--heading);
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        /* --- 4. CARDS --- */
+        .grid {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+            text-align: left;
+            border-top: 5px solid transparent;
+            transition: transform 0.2s;
+        }
+
+        .card:hover { transform: translateY(-5px); border-top-color: var(--accent); }
+
+        .icon { font-size: 40px; margin-bottom: 20px; display: block; }
+        .card h3 { color: var(--heading); margin: 0 0 15px; font-size: 22px; font-weight: 700; }
+        .card p { color: var(--text-muted); margin-bottom: 25px; min-height: 60px; }
+        
+        .card-link {
+            display: block; text-align: center; padding: 12px 0;
+            border: 2px solid var(--heading); color: var(--heading);
+            text-decoration: none; font-weight: bold; border-radius: 5px;
+            transition: 0.3s;
+        }
+        .card-link:hover { background: var(--heading); color: var(--bg-card); }
+
+        /* --- 5. FEATURES --- */
+        .feature-section { padding: 80px 0; border-top: 1px solid var(--border); }
+        .feature-row { display: flex; align-items: center; gap: 50px; margin-bottom: 80px; }
+        .feature-text { flex: 1; }
+        
+        /* Box for images placeholder */
+        .feature-visual { 
+            flex: 1; height: 300px; 
+            background: var(--bg-hero); 
+            border: 1px solid var(--border);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); font-weight: bold;
+        }
+        
+        .feature-text h2 { color: var(--heading); font-size: 32px; margin-bottom: 20px; }
+        .feature-text p { font-size: 18px; color: var(--text-muted); margin-bottom: 20px; }
+        .check-list { list-style: none; padding: 0; }
+        .check-list li { margin-bottom: 10px; font-size: 16px; color: var(--text-main); }
+        .check-list li::before { content: "✓"; color: var(--accent); font-weight: bold; margin-right: 10px; }
+
+        /* --- 6. SEO & FOOTER --- */
+        .seo-section { background: #001F3F; color: white; padding: 60px 20px; text-align: center; }
+        .seo-section h3 { margin-bottom: 30px; font-size: 24px; color: white; }
+        .city-list { 
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; 
+            max-width: 900px; margin: 0 auto;
+        }
+        .city-tag {
+            background: rgba(255,255,255,0.1); padding: 5px 15px; 
+            border-radius: 20px; font-size: 14px; color: white;
+        }
+
+        footer { background: #001020; color: #888; text-align: center; padding: 30px 0; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .grid, .feature-row { flex-direction: column; }
+            .feature-row:nth-child(even) { flex-direction: column-reverse; }
+            .feature-visual { height: 200px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-row">
+            <a href="/" class="logo">Clean <span>SD</span></a>
+            <a href="/book.html" class="book-btn">Book Online</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <h1>San Diego’s Turnover Specialists</h1>
+            <p>Automated cleaning for Airbnb Hosts. Guaranteed Move-Out Cleans.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <span class="icon">📅</span>
+                    <h3>Airbnb / Turnover</h3>
+                    <p>We sync with your calendar. Photo reports included to protect your Superhost status.</p>
+                    <a href="#" class="card-link">Get Host Quote</a>
+                </div>
+                <div class="card">
+                    <span class="icon">🛡️</span>
+                    <h3>Move-In / Move-Out</h3>
+                    <p>Don't lose your deposit. We guarantee our work for landlord inspections.</p>
+                    <a href="#" class="card-link">Get Deposit-Back Price</a>
+                </div>
+                <div class="card">
+                    <span class="icon">✨</span>
+                    <h3>Standard Residential</h3>
+                    <p>Eco-friendly regular maintenance for your home or apartment in San Diego.</p>
+                    <a href="#" class="card-link">Book House Cleaning</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container feature-section">
+        
+        <div class="feature-row">
+            <div class="feature-text">
+                <h2>Turnover Cleaning on Autopilot</h2>
+                <p>Hosts are busy. We make sure you never miss a turnover.</p>
+                <ul class="check-list">
+                    <li><strong>Calendar Sync:</strong> Connect your Airbnb/VRBO iCal. We schedule automatically.</li>
+                    <li><strong>Visual Reports:</strong> We send 50+ photos after every clean so you can see the results remotely.</li>
+                    <li><strong>Damage Alerts:</strong> We photograph damages BEFORE cleaning for your AirCover claims.</li>
+                </ul>
+            </div>
+            <div class="feature-visual">
+                [ Image: iPhone showing Airbnb Calendar Sync ]
+            </div>
+        </div>
+
+        <div class="feature-row">
+            <div class="feature-text">
+                <h2>Guaranteed Move-Out Cleans</h2>
+                <p>Moving is stressful. Your cleaning shouldn't be. We follow a strict landlord checklist.</p>
+                <ul class="check-list">
+                    <li><strong>Deep Scrub:</strong> Inside ovens, fridges, and cabinets included.</li>
+                    <li><strong>Re-Clean Promise:</strong> If your landlord finds a speck of dust, we return and fix it for FREE within 24 hours.</li>
+                    <li><strong>Flat Pricing:</strong> No hidden fees. Know your cost upfront.</li>
+                </ul>
+            </div>
+            <div class="feature-visual">
+                [ Image: Sparkling Clean Empty Apartment ]
+            </div>
+        </div>
+
+    </div>
+
+    <div class="seo-section">
+        <h3>Proudly Serving San Diego County</h3>
+        <div class="city-list">
+            <span class="city-tag">San Diego</span>
+            <span class="city-tag">Chula Vista</span>
+            <span class="city-tag">Del Mar</span>
+            <span class="city-tag">Oceanside</span>
+            <span class="city-tag">Imperial Beach</span>
+            <span class="city-tag">La Jolla</span>
+            <span class="city-tag">North Park</span>
+            <span class="city-tag">Ocean Beach</span>
+            <span class="city-tag">Pacific Beach</span>
+            <span class="city-tag">La Mesa</span>
+            <span class="city-tag">El Cajon</span>
+            <span class="city-tag">National City</span>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Clean SD. <br> Need help? Email: support@clean-sd.org</p>
+    </footer>
+
+</body>
+</html>
