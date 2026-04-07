@@ -695,51 +695,55 @@
     <div class="section-tag reveal">Our Work — Before & After</div>
     <h2 class="section-title reveal">See Our Transformations</h2>
     <p class="reveal" style="color: var(--gray); max-width: 600px; line-height: 1.8;">Every property cleaned to our highest standards. Scroll through our recent work and see why San Diego hosts trust us.</p>
-    
-    <div class="gallery-grid">
-      <a href="https://www.instagram.com/p/17866761603505594/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax3-1.cdninstagram.com/v/t51.82787-15/655001705_18040628594757863_7535023046042706233_n.jpg" alt="Before the magic happens" loading="lazy">
-        <div class="gallery-caption">Before the magic happens!</div>
-      </a>
-      <a href="https://www.instagram.com/p/18109445185744577/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax3-2.cdninstagram.com/v/t51.82787-15/653632858_18040436411757863_7088520890795266369_n.jpg" alt="After the magic" loading="lazy">
-        <div class="gallery-caption">✨ After the magic!</div>
-      </a>
-      <a href="https://www.instagram.com/p/17926383786248724/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax3-1.cdninstagram.com/v/t51.82787-15/653694133_18040332398757863_6738563645442426927_n.jpg" alt="Sparkling perfection achieved" loading="lazy">
-        <div class="gallery-caption">✅ Sparkling Perfection!</div>
-      </a>
-      <a href="https://www.instagram.com/p/18074453393164350/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax3-1.cdninstagram.com/v/t51.82787-15/653853824_18040332380757863_3962242812788273650_n.jpg" alt="Before transformation" loading="lazy">
-        <div class="gallery-caption">🔴 Before Transformation</div>
-      </a>
-      <a href="https://www.instagram.com/p/18023753884991435/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax3-1.cdninstagram.com/v/t39.30808-6/481241928_626877186737973_5649293737385009577_n.jpg" alt="Before and after carousel" loading="lazy">
-        <div class="gallery-caption">Before & After Magic!</div>
-      </a>
-      <a href="https://www.instagram.com/p/17954426777635614/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax7-1.cdninstagram.com/v/t39.30808-6/481235989_626877206737971_7091147785085456117_n.jpg" alt="Airbnb refresh" loading="lazy">
-        <div class="gallery-caption">Airbnb Refresh 🌟</div>
-      </a>
-      <a href="https://www.instagram.com/p/18013233422224725/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax3-1.cdninstagram.com/v/t39.30808-6/481045621_626877536737938_8084717261544307685_n.jpg" alt="Airbnb and cleaning" loading="lazy">
-        <div class="gallery-caption">Airbnb + Cleaning Perfect Match!</div>
-      </a>
-      <a href="https://www.instagram.com/p/18022281734095577/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax3-1.cdninstagram.com/v/t39.30808-6/482013024_626877490071276_5925986355075996201_n.jpg" alt="Thank you San Diego" loading="lazy">
-        <div class="gallery-caption">Thank You, San Diego! 🙌</div>
-      </a>
-      <a href="https://www.instagram.com/p/18024083569846407/" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">
-        <img src="https://scontent-lax3-1.cdninstagram.com/v/t39.30808-6/481166929_626877516737940_8103559813854899419_n.jpg" alt="Kitchen magic" loading="lazy">
-        <div class="gallery-caption">Kitchen Magic! 🍽️</div>
-      </a>
+
+    <div class="gallery-grid" id="ig-gallery">
+      <!-- Loaded dynamically from Instagram -->
+      <div class="gallery-loading" style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--gray);font-size:1.1rem;">
+        Loading our latest work...
+      </div>
     </div>
-    
+
     <div class="reveal" style="text-align: center; margin-top: 60px;">
       <a href="https://www.instagram.com/sandiego_cleaner/" target="_blank" class="btn-primary">Follow us @sandiego_cleaner</a>
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  var TOKEN = 'IGAAUET6pTnBhBZAGJCdXhMMEJHdXBiTVZAKaW95N0ZAQVXd3dnRsbFlleTZAIaFZAkeVhnczJYRV9yTElDc2p1akJfQWZAKZAFJ0cUw3T1ZABRWpXT2hBQW5Db3lrejZAaMF84bEIwcWxRNE1Ub1BjUEM5X3ljWUdR';
+  var ACCOUNT_ID = '26293959066906001';
+  var grid = document.getElementById('ig-gallery');
+
+  var url = 'https://graph.instagram.com/' + ACCOUNT_ID + '/media'
+    + '?fields=id,media_type,media_url,permalink,caption,timestamp'
+    + '&limit=9&access_token=' + TOKEN;
+
+  fetch(url)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      if (!data.data || data.data.length === 0) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--gray);">Follow us on Instagram to see our work!</div>';
+        return;
+      }
+      var html = '';
+      data.data.slice(0, 9).forEach(function(post) {
+        var imgSrc = post.media_url || '';
+        var link = post.permalink || 'https://www.instagram.com/sandiego_cleaner/';
+        var cap = (post.caption || 'San Diego Cleaner').split('\n')[0].substring(0, 60);
+        if (cap.length === 60) cap += '…';
+        html += '<a href="' + link + '" target="_blank" rel="noopener" class="gallery-item reveal" title="View on Instagram">'
+          + '<img src="' + imgSrc + '" alt="San Diego Cleaner - ' + cap + '" loading="lazy" onerror="this.parentElement.style.display=\'none\'">'
+          + '<div class="gallery-caption">' + cap + '</div>'
+          + '</a>';
+      });
+      grid.innerHTML = html;
+    })
+    .catch(function() {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--gray);">See our work on <a href="https://www.instagram.com/sandiego_cleaner/" target="_blank" style="color:var(--gold)">@sandiego_cleaner</a></div>';
+    });
+})();
+</script>
 
 <!-- PROCESS -->
 <section id="process">
